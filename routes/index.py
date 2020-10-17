@@ -9,7 +9,7 @@ from quart_jwt_extended import jwt_required, get_jwt_identity
 @app.route('/')
 @app.route('/index')
 @jwt_required
-def index():
+async def index():
    # pexpect.run('rm ../ansible/log.txt')
     #pexpect.run('touch ../ansible/log.txt')
   #  con = create_db_con()
@@ -18,3 +18,10 @@ def index():
     #con.close()
     #return render_template('index.html', title='Home')
     return jsonify({"message":"Good luck"})
+
+
+@app.route('/openapi.json')
+# add other decorators if desired
+async def openapi():
+  # add other logic if desired
+  return jsonify(app.__schema__)

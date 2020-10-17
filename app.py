@@ -11,13 +11,14 @@ import sys
 from quart import Quart, g, request
 from quart_cors import cors
 from quart_jwt_extended import JWTManager
+from quart_openapi import Pint, Resource
 
 sys.path.append('./')
 
 load_dotenv()
 
 
-app = Quart(__name__)
+app = Pint(__name__, title='xmigrate.cloud',no_openapi=True)
 
 app = cors(app, allow_origin="*")
 
